@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Contact } from 'src/app/models/contact';
 
 @Component({
@@ -7,7 +7,7 @@ import { Contact } from 'src/app/models/contact';
   styleUrls: ['./rubric-contacts.component.scss']
 })
 export class RubricContactsComponent {
-  
-  contacts : Contact[] =[]
+
+@Input()  contacts : Contact[] =[]
 
 }
