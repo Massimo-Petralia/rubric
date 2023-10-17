@@ -1,5 +1,5 @@
 <nz-collapse>
-  <nz-collapse-panel [nzHeader]="'Create new contact'">
+  <nz-collapse-panel #panel [nzHeader]="'Create new contact'" [nzActive]="isActive">
     <form nz-form [formGroup]="form">
       <label for="name">Name: </label>
       <input nz-input type="text" id="name" formControlName="name" />
@@ -10,6 +10,6 @@
       <label for="phone">Phone: </label>
       <input nz-input type="text" id="phone" formControlName="phone" />
     </form>
-    <button>Add contact</button>
+    <button (click)="onCreate()">Add contact</button>
   </nz-collapse-panel>
 </nz-collapse>

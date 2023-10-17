@@ -11,6 +11,7 @@ export class RubricContactComponent implements OnChanges {
   
   @Input() contact: Partial<Contact> = {}
 
+
   
   form = this.formBuilder.group({
     name: this.formBuilder.control<string>(''),
@@ -24,7 +25,6 @@ ngOnChanges(changes: SimpleChanges): void {
   const {contact} = changes
 
 if(contact){
-  debugger
   this.form.patchValue(this.contact || {})
 }
 
