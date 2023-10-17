@@ -14,6 +14,7 @@ import { RubricPageComponent } from './features/rubric/rubric-page/rubric-page.c
 import { RubricContactsComponent } from './features/rubric/rubric-contacts/rubric-contacts.component';
 
 import { ngZorroAntdModule } from './ng-zorro-antd.module';
+import { RubricContactComponent } from './features/rubric/rubric-contact/rubric-contact.component';
 
 registerLocaleData(it);
 
@@ -21,7 +22,8 @@ registerLocaleData(it);
   declarations: [
     AppComponent,
     RubricPageComponent,
-    RubricContactsComponent
+    RubricContactsComponent,
+    RubricContactComponent
   ],
   imports: [
     BrowserModule,
