@@ -10,7 +10,6 @@ import it from '@angular/common/locales/it';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NzInputModule } from 'ng-zorro-antd/input'
 
 registerLocaleData(it);
 
@@ -24,7 +23,6 @@ registerLocaleData(it);
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NzInputModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: it_IT }
