@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RubricPageComponent } from './features/rubric/rubric-page/rubric-page.component';
 import { RubricContactsComponent } from './features/rubric/rubric-contacts/rubric-contacts.component';
 import { RubricContactComponent } from './features/rubric/rubric-contact/rubric-contact.component';
+import { RubricNewContactComponent } from './features/rubric/rubric-new-contact/rubric-new-contact.component';
 
 import { ngZorroAntdModule } from './ng-zorro-antd.module';
 
@@ -24,7 +25,8 @@ registerLocaleData(it);
     AppComponent,
     RubricPageComponent,
     RubricContactsComponent,
-    RubricContactComponent
+    RubricContactComponent,
+    RubricNewContactComponent
   ],
   imports: [
     BrowserModule,
