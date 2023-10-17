@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Contact } from 'src/app/models/contact';
 
 @Component({
   selector: 'app-rubric-new-contact',
@@ -9,6 +10,8 @@ import { FormBuilder } from '@angular/forms';
 export class RubricNewContactComponent {
 
   constructor(private formBuilder: FormBuilder){}
+
+  @Output() create = new EventEmitter<Contact>()
 
   form = this.formBuilder.group({
     name: this.formBuilder.control<string>(''),
