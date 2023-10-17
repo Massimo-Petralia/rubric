@@ -13,6 +13,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RubricPageComponent } from './features/rubric/rubric-page/rubric-page.component';
 import { RubricContactsComponent } from './features/rubric/rubric-contacts/rubric-contacts.component';
 
+import { ngZorroAntdModule } from './ng-zorro-antd.module';
+
 registerLocaleData(it);
 
 @NgModule({
@@ -27,6 +29,7 @@ registerLocaleData(it);
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ngZorroAntdModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: it_IT }
