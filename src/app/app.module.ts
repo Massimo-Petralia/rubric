@@ -12,9 +12,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RubricPageComponent } from './features/rubric/rubric-page/rubric-page.component';
 import { RubricContactsComponent } from './features/rubric/rubric-contacts/rubric-contacts.component';
+import { RubricContactComponent } from './features/rubric/rubric-contact/rubric-contact.component';
 
 import { ngZorroAntdModule } from './ng-zorro-antd.module';
-import { RubricContactComponent } from './features/rubric/rubric-contact/rubric-contact.component';
 
 registerLocaleData(it);
 
