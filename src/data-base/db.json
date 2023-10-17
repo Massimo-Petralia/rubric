@@ -6,6 +6,13 @@
             "email": "mariorossi@hotmail.it",
             "phone": "34264532",
             "id": 1
+        },
+        {
+            "name": "angela",
+            "surname": "privitera",
+            "email": "angelap@hotmail.it",
+            "phone": "347564958",
+            "id": 2
         }
     ]
 }
