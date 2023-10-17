@@ -10,12 +10,14 @@ import it from '@angular/common/locales/it';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RubricPageComponent } from './features/rubric/rubric-page/rubric-page.component';
 
 registerLocaleData(it);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RubricPageComponent
   ],
   imports: [
     BrowserModule,
