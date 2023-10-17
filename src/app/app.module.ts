@@ -11,13 +11,15 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RubricPageComponent } from './features/rubric/rubric-page/rubric-page.component';
+import { RubricContactsComponent } from './features/rubric/rubric-contacts/rubric-contacts.component';
 
 registerLocaleData(it);
 
 @NgModule({
   declarations: [
     AppComponent,
-    RubricPageComponent
+    RubricPageComponent,
+    RubricContactsComponent
   ],
   imports: [
     BrowserModule,
