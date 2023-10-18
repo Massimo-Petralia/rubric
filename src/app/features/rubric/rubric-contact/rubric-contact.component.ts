@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Contact } from 'src/app/models/contact';
 
@@ -9,7 +9,9 @@ import { Contact } from 'src/app/models/contact';
 })
 export class RubricContactComponent implements OnChanges {
   
-  @Input() contact: Partial<Contact> = {}
+  @Input() contact: Partial<Contact> = {};
+
+  @Output() delete = new EventEmitter<number | null>()
 
 
   
@@ -18,6 +20,7 @@ export class RubricContactComponent implements OnChanges {
     surname: this.formBuilder.control<string>(''),
     email: this.formBuilder.control<string>(''),
     phone: this.formBuilder.control<string>(''),
+    id: this.formBuilder.control<number | null>(null)
   });
   constructor(private formBuilder: FormBuilder) {}
 
@@ -28,6 +31,10 @@ if(contact){
   this.form.patchValue(this.contact || {})
 }
 
+}
+
+onDelete(){
+  this.delete.emit(this.form.value.id)
 }
 
 }
