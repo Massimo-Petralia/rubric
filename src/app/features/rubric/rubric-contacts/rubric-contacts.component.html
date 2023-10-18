@@ -1,6 +1,7 @@
-<div *ngIf="!contacts.length">
-  <h3>Non ci sono contatti nella rubrica puoi aggiungerne uno cliccando Create new contact</h3>
-</div>
+<h3 *ngIf="!contacts.length">
+  Non ci sono contatti nella rubrica puoi aggiungerne uno cliccando Create new
+  contact
+</h3>
 <app-rubric-contact
   *ngFor="let contact of contacts"
   [contact]="contact"
