@@ -12,7 +12,7 @@ export class RubricNewContactComponent {
 
   constructor(private formBuilder: FormBuilder) {}
 
-  isActive?: boolean;
+  setActive?: boolean;
 
   form = this.formBuilder.group({
     name: this.formBuilder.control<string>(''),
@@ -30,6 +30,6 @@ export class RubricNewContactComponent {
       phone: '',
     };
     this.form.reset(defaultValue);
-    this.isActive = false;
+    this.setActive = false;
   }
 }
