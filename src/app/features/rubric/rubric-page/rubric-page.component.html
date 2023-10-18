@@ -1,1 +1,6 @@
-<app-rubric-contacts [contacts]="contacts" (create)="onCreate($event)" (delete)="onDelete($event)"></app-rubric-contacts>
+<app-rubric-contacts
+  [contacts]="contacts"
+  (create)="onCreate($event)"
+  (delete)="onDelete($event)"
+  (save)="onSave($event)"
+></app-rubric-contacts>
