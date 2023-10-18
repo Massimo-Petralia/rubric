@@ -12,6 +12,7 @@ export class RubricContactsComponent {
 
 @Output() create = new EventEmitter<Contact>()
 @Output() delete = new EventEmitter<number | null>()
+@Output() save = new EventEmitter<Contact>()
 
 onCreate(contact: Contact){
   this.create.emit(contact)
@@ -19,6 +20,10 @@ onCreate(contact: Contact){
 
 onDelete(id: number | null ){
   this.delete.emit(id)
+}
+
+onSave(contact: Contact){
+  this.save.emit(contact)
 }
 
 }
