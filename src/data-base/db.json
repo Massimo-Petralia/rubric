@@ -15,45 +15,31 @@
       "id": 2
     },
     {
-      "name": "elena",
+      "name": "giuseppe",
       "surname": "petralia",
       "email": "elenap@hotmail.it",
       "phone": "465749569",
       "id": 3
     },
     {
-      "name": "giorgio",
-      "surname": "sarbaggio",
-      "email": "giorgsarb@hotmail.com",
-      "phone": "95958559",
-      "id": 4
-    },
-    {
-      "name": "eleonora",
-      "surname": "casalegno",
-      "email": "casalegnoe@tiscaly.com",
-      "phone": "4384384734",
-      "id": 5
-    },
-    {
-      "name": "sadada",
+      "name": "parco etna",
       "surname": "dasda",
       "email": "asdada",
       "phone": "45333",
       "id": 6
     },
     {
-      "name": "sadsada",
+      "name": "maurizio",
       "surname": "sadsada",
       "email": "asdada",
       "phone": "6565464",
       "id": 7
     },
     {
-      "name": "sadada",
-      "surname": "sadsada",
-      "email": "sadsadsa",
-      "phone": "56456464",
+      "name": "oris",
+      "surname": "arci diacono",
+      "email": "arciduca@hotmail.it",
+      "phone": "095 8643264",
       "id": 8
     }
   ]

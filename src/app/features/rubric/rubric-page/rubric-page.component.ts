@@ -39,5 +39,12 @@ export class RubricPageComponent implements OnInit {
         );
       })
     );
+  };
+
+  onSave(contact: Contact){
+    this.subs.add(
+      this.dataService.updateContact(contact).subscribe()
+    )
   }
+
 }

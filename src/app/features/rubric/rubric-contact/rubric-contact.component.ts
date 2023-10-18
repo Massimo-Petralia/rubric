@@ -1,5 +1,13 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { NzCollapsePanelComponent } from 'ng-zorro-antd/collapse';
 import { Contact } from 'src/app/models/contact';
 
 @Component({
@@ -8,33 +16,38 @@ import { Contact } from 'src/app/models/contact';
   styleUrls: ['./rubric-contact.component.scss'],
 })
 export class RubricContactComponent implements OnChanges {
-  
   @Input() contact: Partial<Contact> = {};
 
-  @Output() delete = new EventEmitter<number | null>()
+  @Output() delete = new EventEmitter<number | null>();
 
+  @Output() save = new EventEmitter<Contact>();
 
-  
   form = this.formBuilder.group({
     name: this.formBuilder.control<string>(''),
     surname: this.formBuilder.control<string>(''),
     email: this.formBuilder.control<string>(''),
     phone: this.formBuilder.control<string>(''),
-    id: this.formBuilder.control<number | null>(null)
+    id: this.formBuilder.control<number | null>(null),
   });
+
+
   constructor(private formBuilder: FormBuilder) {}
 
-ngOnChanges(changes: SimpleChanges): void {
-  const {contact} = changes
+  ngOnChanges(changes: SimpleChanges): void {
+    const { contact } = changes;
 
-if(contact){
-  this.form.patchValue(this.contact || {})
+    if (contact) {
+      this.form.patchValue(this.contact || {});
+    }
+  }
+  
+  onDelete() {
+    this.delete.emit(this.form.value.id);
+  }
+  
+  onSave() {
+    this.contact.name = this.form.value.name //assegno il valore inserito in input dall'utente 
+    //alla proprietà name dell'oggetto contact: Contact
+    this.save.emit(this.form.value);
 }
-
-}
-
-onDelete(){
-  this.delete.emit(this.form.value.id)
-}
-
 }
