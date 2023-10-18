@@ -11,7 +11,9 @@ export class RubricContactComponent implements OnChanges {
   
   @Input() contact: Partial<Contact> = {};
 
-  @Output() delete = new EventEmitter<number | null>()
+  @Output() delete = new EventEmitter<number | null>();
+
+  @Output() save = new EventEmitter<Contact>()
 
 
   
@@ -35,6 +37,10 @@ if(contact){
 
 onDelete(){
   this.delete.emit(this.form.value.id)
+}
+
+onSave(){
+  this.save.emit(this.form.value)
 }
 
 }
