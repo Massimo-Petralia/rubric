@@ -32,4 +32,8 @@ onCreate(contact: Contact){
   )
 }
 
+onDelete(id: number | null){
+  
+}
+
 }
