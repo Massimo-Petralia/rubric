@@ -36,6 +36,15 @@ export class DataService {
         throw error
       })
     )
+  };
+
+  updateContact(contact: Contact){
+    return this.http.put<Contact>(this.dataURL, contact).pipe(
+      catchError((error)=>{
+        console.error('update fail', error);
+        throw error
+      })
+    )
   }
 
 }
