@@ -1,3 +1,4 @@
 
 
 <app-rubric-contact *ngFor="let contact of contacts" [contact]="contact"></app-rubric-contact>
+<app-rubric-new-contact (create)="onCreate($event)"></app-rubric-new-contact>

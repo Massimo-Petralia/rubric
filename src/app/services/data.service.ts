@@ -14,7 +14,16 @@ export class DataService {
   getData() {
     return this.http.get<Contact[]>(this.dataURL).pipe(
       catchError((error) => {
-        console.error('get contacts failed', error);
+        console.error('get contacts fail', error);
+        throw error;
+      })
+    );
+  }
+
+  createContact(contact: Contact) {
+    return this.http.post<Contact>(this.dataURL, contact).pipe(
+      catchError((error) => {
+        console.error('post contact fail', error);
         throw error;
       })
     );

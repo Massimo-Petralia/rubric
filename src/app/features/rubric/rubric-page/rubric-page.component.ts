@@ -24,4 +24,12 @@ ngOnInit(): void {
   )
 }
 
+onCreate(contact: Contact){
+  this.subs.add(
+    this.dataService.createContact(contact).subscribe((contact)=> 
+     this.contacts = [...this.contacts, contact]
+    )
+  )
+}
+
 }
