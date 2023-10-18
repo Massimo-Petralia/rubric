@@ -1,12 +1,10 @@
 import {
   Component,
-  ElementRef,
   EventEmitter,
   Input,
   OnChanges,
   Output,
   SimpleChanges,
-  ViewChild,
 } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { NzCollapsePanelComponent } from 'ng-zorro-antd/collapse';
@@ -48,8 +46,8 @@ export class RubricContactComponent implements OnChanges {
   }
   
   onSave() {
-    this.contact.name = this.form.value.name //intanto cosi aggiorno la vista [nzHeader] con i nuovi valori inseriti dall'utente
-    //poi la chiamata put ritornera i dati per aggiornare il form in base a quelli che ha inserito l'utente
+    this.contact.name = this.form.value.name //assegno il valore inserito in input dall'utente 
+    //alla proprietà name dell'oggetto contact: Contact
     this.save.emit(this.form.value);
 }
 }
