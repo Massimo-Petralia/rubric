@@ -1,5 +1,5 @@
 <nz-collapse>
-  <nz-collapse-panel #panel [nzHeader]="'Create new contact'" [nzActive]="setActive">
+  <nz-collapse-panel class="panelHeader" #panel [nzHeader]="'Create new contact'" [nzActive]="setActive">
     <form nz-form [formGroup]="form">
       <label for="name">Name: </label>
       <input nz-input type="text" id="name" formControlName="name" />
