@@ -27,5 +27,15 @@ export class DataService {
         throw error;
       })
     );
+  };
+
+  deleteContact(id: number | null){
+    return this.http.delete(`${this.dataURL}/${id}`).pipe(
+      catchError((error)=> {
+        console.error('delete fail', error);
+        throw error
+      })
+    )
   }
+
 }

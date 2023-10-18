@@ -11,9 +11,14 @@ export class RubricContactsComponent {
 @Input()  contacts : Contact[] =[]
 
 @Output() create = new EventEmitter<Contact>()
+@Output() delete = new EventEmitter<number | null>()
 
 onCreate(contact: Contact){
   this.create.emit(contact)
+}
+
+onDelete(id: number | null ){
+  this.delete.emit(id)
 }
 
 }
