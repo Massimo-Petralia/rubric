@@ -5,9 +5,7 @@
   contact
 </h3>
 
-<div *ngIf="showSaved">
-<p style="color: darkolivegreen;">{{newContact}} è stato aggiunto alla rubrica</p>
-</div>
+
 <app-rubric-contact
 *ngFor="let contact of contacts"
 [contact]="contact"
@@ -18,3 +16,6 @@
 <button (click)="sortAlphabetically()">Sort</button>
 <nz-pagination [nzPageIndex]="1" [nzTotal]="totalContacts" (nzPageIndexChange)="paginateData($event)"></nz-pagination>
 <app-rubric-new-contact (create)="onCreate($event)"></app-rubric-new-contact>
+<div *ngIf="showSaved">
+  <p>{{newContact}} aggiunto alla rubrica</p>
+  </div> 

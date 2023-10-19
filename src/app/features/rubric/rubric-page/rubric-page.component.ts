@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { Contact } from 'src/app/models/contact';
 import { DataService } from 'src/app/services/data.service';
 import { OnDestroy } from '@angular/core';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-rubric-page',
@@ -18,31 +19,27 @@ export class RubricPageComponent implements OnInit, OnDestroy {
 
   totalContacts?: number;
 
-  page!: number;
+  // page!: number;
 
   getContactsPage(page: number) {
-    this.subs.add(
-      this.dataService.getData(page).subscribe((contacts) => {
-        const xTotalCount = contacts.headers.get('X-total-count');
-        if (xTotalCount) {
-          this.totalContacts = Number(xTotalCount);
-        }
-        this.contacts = contacts.body!;
-      })
-    );
-    return (this.page = page);
+    debugger;
+    this.dataService.getData(page).subscribe((contacts) => {
+      const xTotalCount = contacts.headers.get('X-total-count');
+      if (xTotalCount) {
+        this.totalContacts = Number(xTotalCount);
+      }
+      this.contacts = contacts.body!;
+      debugger;
+    });
   }
-  
+
   ngOnInit(): void {
-    this.getContactsPage(this.page);
+    const page = 1;
+    this.getContactsPage(page);
   }
 
   onCreate(contact: Contact) {
-    this.subs.add(
-      this.dataService.createContact(contact).subscribe(() => {
-        //(this.contacts = [...this.contacts, contact]); al posto di questo impostare un messagio di notifica
-      })
-    );
+    this.subs.add(this.dataService.createContact(contact).subscribe(() => {}));
   }
 
   onDelete(id: number | null) {

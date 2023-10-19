@@ -4,23 +4,19 @@ import {
   Input,
   Output,
   OnDestroy,
-  OnChanges,
-  SimpleChanges,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Contact } from 'src/app/models/contact';
-import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-rubric-contacts',
   templateUrl: './rubric-contacts.component.html',
   styleUrls: ['./rubric-contacts.component.scss'],
 })
-export class RubricContactsComponent implements OnChanges, OnDestroy {
-
+export class RubricContactsComponent implements OnDestroy {
   newContact?: string | null;
 
-  showSaved: boolean = false
+  showSaved: boolean = false;
 
   subs = new Subscription();
 
@@ -35,39 +31,22 @@ export class RubricContactsComponent implements OnChanges, OnDestroy {
   @Output() save = new EventEmitter<Contact>();
 
   paginateData(page: number) {
-    this.page.emit(page)
-    // this.subs.add(
-    //   this.dataService.getData(page).subscribe((contacts) => {
-    //     const xTotalCount = contacts.headers.get('X-total-count');
-    //     if (xTotalCount) {
-    //       this.totalContacts = Number(xTotalCount);
-    //     }
-    //     this.contacts = contacts.body!;
-    //   })
-    // );
-    debugger
-  };
-
-  ngOnChanges(changes: SimpleChanges): void {
-    debugger
-    // const {totalContacts} = changes;
-    // if(totalContacts){
-    //   console.log('current contacts: ', totalContacts.currentValue)
-    //  // this.totalContacts = totalContacts.currentValue
-    // }
+    this.page.emit(page);
   }
 
   onCreate(contact: Contact) {
     this.create.emit(contact);
     this.newContact = contact.name;
-    this.showSaved = true
-    setTimeout(()=>{this.showSaved = false}, 2000);
-    this.totalContacts = this.totalContacts! +1
+    this.showSaved = true;
+    setTimeout(() => {
+      this.showSaved = false;
+    }, 2000);
+    this.totalContacts = this.totalContacts! + 1;
   }
 
   onDelete(id: number | null) {
     this.delete.emit(id);
-    this.totalContacts = this.totalContacts! -1
+    this.totalContacts = this.totalContacts! - 1;
   }
 
   onSave(contact: Contact) {
@@ -87,8 +66,6 @@ export class RubricContactsComponent implements OnChanges, OnDestroy {
       return 0;
     });
   }
-
-
 
   ngOnDestroy(): void {
     this.subs.unsubscribe();
