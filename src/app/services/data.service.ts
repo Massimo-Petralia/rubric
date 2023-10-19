@@ -11,8 +11,9 @@ export class DataService {
 
   constructor(private http: HttpClient) {}
 
-  getData() {
-    return this.http.get<Contact[]>(this.dataURL).pipe(
+  getData(page: number) {
+    return this.http.get<Contact[]>(`http://localhost:3000/contacts?_page=${page}`, {observe: 'response'}).pipe(
+      
       catchError((error) => {
         console.error('get contacts fail', error);
         throw error;

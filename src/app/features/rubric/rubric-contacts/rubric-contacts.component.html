@@ -1,12 +1,15 @@
+
+
 <h3 *ngIf="!contacts.length">
   Non ci sono contatti nella rubrica puoi aggiungerne uno cliccando Create new
   contact
 </h3>
+<nz-pagination [nzPageIndex]="1" [nzTotal]="totalContacts" (nzPageIndexChange)="paginateData($event)"></nz-pagination>
 <app-rubric-contact
-  *ngFor="let contact of contacts"
-  [contact]="contact"
-  (delete)="onDelete($event)"
-  (save)="onSave($event)"
+*ngFor="let contact of contacts"
+[contact]="contact"
+(delete)="onDelete($event)"
+(save)="onSave($event)"
 ></app-rubric-contact>
 <button (click)="sortAlphabetically()">Sort</button>
 <app-rubric-new-contact (create)="onCreate($event)"></app-rubric-new-contact>
