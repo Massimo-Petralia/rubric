@@ -29,22 +29,23 @@ export class RubricContactsComponent implements OnDestroy {
 
   @Input() contacts: Contact[] = [];
 
-  @Output() getpage = new EventEmitter<number>();
+  @Output() page = new EventEmitter<number>();
 
   @Output() create = new EventEmitter<Contact>();
   @Output() delete = new EventEmitter<number | null>();
   @Output() save = new EventEmitter<Contact>();
 
   paginateData(page: number) {
-    this.subs.add(
-      this.dataService.getData(page).subscribe((contacts) => {
-        const xTotalCount = contacts.headers.get('X-total-count');
-        if (xTotalCount) {
-          this.totalContacts = Number(xTotalCount);
-        }
-        this.contacts = contacts.body!;
-      })
-    );
+    this.page.emit(page)
+    // this.subs.add(
+    //   this.dataService.getData(page).subscribe((contacts) => {
+    //     const xTotalCount = contacts.headers.get('X-total-count');
+    //     if (xTotalCount) {
+    //       this.totalContacts = Number(xTotalCount);
+    //     }
+    //     this.contacts = contacts.body!;
+    //   })
+    // );
   }
 
   onCreate(contact: Contact) {

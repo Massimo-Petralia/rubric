@@ -20,17 +20,31 @@ export class RubricPageComponent implements OnInit, OnDestroy {
 
   totalContacts?: number;
 
+  page!: number;
 
+getContactsPage(page: number){
+  this.subs.add(
+    this.dataService.getData(page).subscribe((contacts) => {
+      const xTotalCount = contacts.headers.get('X-total-count');
+      if (xTotalCount) {
+        this.totalContacts = Number(xTotalCount);
+      }
+      this.contacts = contacts.body!;
+    })
+  );
+  return  this.page = page
+}
   ngOnInit(): void {
-    this.subs.add(
-      this.dataService.getData(1).subscribe((contacts) => {
-        const xTotalCount = contacts.headers.get('X-total-count');
-        if (xTotalCount) {
-          this.totalContacts = Number(xTotalCount);
-        }
-        this.contacts = contacts.body!;
-      })
-    );
+    // this.subs.add(
+    //   this.dataService.getData(1).subscribe((contacts) => {
+    //     const xTotalCount = contacts.headers.get('X-total-count');
+    //     if (xTotalCount) {
+    //       this.totalContacts = Number(xTotalCount);
+    //     }
+    //     this.contacts = contacts.body!;
+    //   })
+    // );
+    this.getContactsPage(this.page)
   };
 
 
