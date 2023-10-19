@@ -9,10 +9,10 @@ import { OnDestroy } from '@angular/core';
   templateUrl: './rubric-page.component.html',
   styleUrls: ['./rubric-page.component.scss'],
 })
-export class RubricPageComponent implements OnInit , OnDestroy{
+export class RubricPageComponent implements OnInit, OnDestroy {
   constructor(private dataService: DataService) {}
 
-  contacts: Contact[]   = [];
+  contacts: Contact[] = [];
 
   subs = new Subscription();
 
@@ -20,19 +20,12 @@ export class RubricPageComponent implements OnInit , OnDestroy{
 
   ngOnInit(): void {
     this.subs.add(
-      
       this.dataService.getData(1).subscribe((contacts) => {
         const xTotalCount = contacts.headers.get('X-total-count');
-        if(xTotalCount){
-        this.totalContacts = Number(xTotalCount) 
-          console.log('total count: ', xTotalCount, typeof(xTotalCount))
-        } else {
-          console.log('x-total-count non esiste')
+        if (xTotalCount) {
+          this.totalContacts = Number(xTotalCount);
         }
-        console.log('body: ', contacts.body, 'tipo: ', typeof(contacts.body))
-       this.contacts = contacts.body!;
-        
-  
+        this.contacts = contacts.body!;
       })
     );
   }
@@ -48,19 +41,15 @@ export class RubricPageComponent implements OnInit , OnDestroy{
   onDelete(id: number | null) {
     this.subs.add(
       this.dataService.deleteContact(id).subscribe(() => {
-        this.contacts = this.contacts.filter((contact) => 
-          contact.id !== id
-        );
+        this.contacts = this.contacts.filter((contact) => contact.id !== id);
       })
     );
-  };
-
-  onSave(contact: Contact){
-    this.subs.add(
-      this.dataService.updateContact(contact).subscribe()
-    )
   }
-ngOnDestroy(): void {
-  this.subs.unsubscribe()
-}
+
+  onSave(contact: Contact) {
+    this.subs.add(this.dataService.updateContact(contact).subscribe());
+  }
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
+  }
 }

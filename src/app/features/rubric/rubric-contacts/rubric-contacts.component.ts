@@ -4,7 +4,6 @@ import {
   Input,
   Output,
   OnDestroy,
-  OnInit,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Contact } from 'src/app/models/contact';
@@ -16,21 +15,10 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './rubric-contacts.component.html',
   styleUrls: ['./rubric-contacts.component.scss'],
 })
-export class RubricContactsComponent implements OnInit, OnDestroy {
+export class RubricContactsComponent implements OnDestroy {
   constructor(private dataService: DataService, private http: HttpClient) {}
 
-  @Input() totalContacts?: number
-  //totalitems?: number;
-
-  ngOnInit(): void {
-    // this.subs.add(
-    //   this.http
-    //     .get<Contact[]>('http://localhost:3000/contacts')
-    //     .subscribe((items) => {
-    //       this.totalitems = items.length;
-    //     })
-    // );
-  }
+  @Input() totalContacts?: number;
 
   subs = new Subscription();
 
@@ -70,7 +58,6 @@ export class RubricContactsComponent implements OnInit, OnDestroy {
     this.page = this.page + 1;
     this.subs.add(
       this.dataService.getData(page).subscribe((contacts) => {
-
         this.contacts = contacts.body!;
       })
     );
