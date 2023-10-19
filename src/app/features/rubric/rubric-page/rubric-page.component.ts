@@ -40,10 +40,11 @@ export class RubricPageComponent implements OnInit, OnDestroy {
       this.dataService
         .createContact(contact)
         .subscribe((contact) => {
-          (this.contacts = [...this.contacts, contact]);
+          //(this.contacts = [...this.contacts, contact]); al posto di questo impostare un messagio di notifica
         })
     );
   }
+
 
   onDelete(id: number | null) {
     this.subs.add(

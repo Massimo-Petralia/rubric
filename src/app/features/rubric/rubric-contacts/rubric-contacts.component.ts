@@ -5,7 +5,7 @@ import {
   Output,
   OnDestroy,
   OnChanges,
-  SimpleChanges
+  SimpleChanges,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Contact } from 'src/app/models/contact';
@@ -16,37 +16,46 @@ import { DataService } from 'src/app/services/data.service';
   templateUrl: './rubric-contacts.component.html',
   styleUrls: ['./rubric-contacts.component.scss'],
 })
-export class RubricContactsComponent implements OnChanges, OnDestroy {
-  constructor(private dataService: DataService){}
+export class RubricContactsComponent implements OnDestroy {
+  constructor(private dataService: DataService) {}
+
+  newContact?: string | null;
+
+  showSaved: boolean = false
 
   subs = new Subscription();
 
-  //message = "Non ci sono contatti nella rubrica puoi aggiungerne uno cliccando Create new contact"
-
   @Input() totalContacts?: number;
-
 
   @Input() contacts: Contact[] = [];
 
+  @Output() getpage = new EventEmitter<number>();
 
   @Output() create = new EventEmitter<Contact>();
   @Output() delete = new EventEmitter<number | null>();
   @Output() save = new EventEmitter<Contact>();
 
-  ngOnChanges(changes: SimpleChanges): void {
-    // const contacts = changes
-    // if(contacts){
-    //   this.message = "pagina vuota"
-    // }
+  paginateData(page: number) {
+    this.subs.add(
+      this.dataService.getData(page).subscribe((contacts) => {
+        const xTotalCount = contacts.headers.get('X-total-count');
+        if (xTotalCount) {
+          this.totalContacts = Number(xTotalCount);
+        }
+        this.contacts = contacts.body!;
+      })
+    );
   }
 
   onCreate(contact: Contact) {
     this.create.emit(contact);
+    this.newContact = contact.name;
+    this.showSaved = true
+    setTimeout(()=>{this.showSaved = false}, 2000)
   }
 
   onDelete(id: number | null) {
     this.delete.emit(id);
-
   }
 
   onSave(contact: Contact) {
@@ -66,21 +75,10 @@ export class RubricContactsComponent implements OnChanges, OnDestroy {
       return 0;
     });
   }
-  paginateData(page: number){
-    this.subs.add(
-      this.dataService.getData(page).subscribe((contacts)=>{
-           const xTotalCount = contacts.headers.get('X-total-count');
-        if (xTotalCount) {
-          this.totalContacts = Number(xTotalCount);
-        }
-        this.contacts = contacts.body!
-      })
 
-    )
+
+
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
   }
-
-ngOnDestroy(): void {
-  this.subs.unsubscribe()
-}
-
 }

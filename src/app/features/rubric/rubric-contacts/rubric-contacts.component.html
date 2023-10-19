@@ -5,6 +5,9 @@
   contact
 </h3>
 
+<div *ngIf="showSaved">
+<p style="color: darkolivegreen;">{{newContact}} è stato aggiunto alla rubrica</p>
+</div>
 <app-rubric-contact
 *ngFor="let contact of contacts"
 [contact]="contact"
