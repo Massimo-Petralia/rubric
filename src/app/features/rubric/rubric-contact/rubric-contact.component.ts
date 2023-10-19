@@ -7,7 +7,6 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { NzCollapsePanelComponent } from 'ng-zorro-antd/collapse';
 import { Contact } from 'src/app/models/contact';
 
 @Component({
