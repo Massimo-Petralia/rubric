@@ -16,8 +16,7 @@ import { DataService } from 'src/app/services/data.service';
   templateUrl: './rubric-contacts.component.html',
   styleUrls: ['./rubric-contacts.component.scss'],
 })
-export class RubricContactsComponent implements OnDestroy {
-  constructor(private dataService: DataService) {}
+export class RubricContactsComponent implements OnChanges, OnDestroy {
 
   newContact?: string | null;
 
@@ -46,17 +45,29 @@ export class RubricContactsComponent implements OnDestroy {
     //     this.contacts = contacts.body!;
     //   })
     // );
+    debugger
+  };
+
+  ngOnChanges(changes: SimpleChanges): void {
+    debugger
+    // const {totalContacts} = changes;
+    // if(totalContacts){
+    //   console.log('current contacts: ', totalContacts.currentValue)
+    //  // this.totalContacts = totalContacts.currentValue
+    // }
   }
 
   onCreate(contact: Contact) {
     this.create.emit(contact);
     this.newContact = contact.name;
     this.showSaved = true
-    setTimeout(()=>{this.showSaved = false}, 2000)
+    setTimeout(()=>{this.showSaved = false}, 2000);
+    this.totalContacts = this.totalContacts! +1
   }
 
   onDelete(id: number | null) {
     this.delete.emit(id);
+    this.totalContacts = this.totalContacts! -1
   }
 
   onSave(contact: Contact) {
