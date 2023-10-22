@@ -19,27 +19,34 @@ export class RubricPageComponent implements OnInit, OnDestroy {
 
   totalContacts?: number;
 
-  // page!: number;
+  page!: number;
 
-  getContactsPage(page: number) {
-    debugger;
-    this.dataService.getData(page).subscribe((contacts) => {
-      const xTotalCount = contacts.headers.get('X-total-count');
-      if (xTotalCount) {
-        this.totalContacts = Number(xTotalCount);
-      }
-      this.contacts = contacts.body!;
-      debugger;
-    });
+  getContactsPages(page: number) {
+    this.subs.add(
+      this.dataService.getData(page).subscribe((contacts) => {
+        const xTotalCount = contacts.headers.get('X-total-count');
+        if (xTotalCount) {
+          this.totalContacts = Number(xTotalCount);
+        }
+        this.contacts = contacts.body!;
+        debugger;
+      })
+    );
+    return (this.page = page);
   }
 
   ngOnInit(): void {
-    const page = 1;
-    this.getContactsPage(page);
+    const firstpage = 1;
+    this.getContactsPages(firstpage);
   }
 
   onCreate(contact: Contact) {
-    this.subs.add(this.dataService.createContact(contact).subscribe(() => {}));
+    this.subs.add(
+      this.dataService.createContact(contact).subscribe((response) => {
+        console.log('on create response: ', response);
+      })
+    );
+    this.getContactsPages(this.page);
   }
 
   onDelete(id: number | null) {
@@ -48,6 +55,7 @@ export class RubricPageComponent implements OnInit, OnDestroy {
         this.contacts = this.contacts.filter((contact) => contact.id !== id);
       })
     );
+    this.getContactsPages(this.page);
   }
 
   onSave(contact: Contact) {
