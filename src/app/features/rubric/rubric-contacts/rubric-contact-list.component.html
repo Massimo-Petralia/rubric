@@ -15,7 +15,6 @@
   [nzPageIndex]="currentPage"
   [nzTotal]="totalContacts"
   (nzPageIndexChange)="paginateData($event)"
-  #pagination
 ></nz-pagination>
 
 <app-rubric-new-contact (create)="onCreate($event)"></app-rubric-new-contact>
