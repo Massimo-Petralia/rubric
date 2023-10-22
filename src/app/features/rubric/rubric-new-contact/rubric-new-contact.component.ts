@@ -16,8 +16,8 @@ export class RubricNewContactComponent {
 
   setActive: BooleanInput;
 
-  @Input() currentPage?: number
-  @Output() getpage = new EventEmitter<number>() 
+  //@Input() currentPage?: number
+  //@Output() getpage = new EventEmitter<number>() 
 
   form = this.formBuilder.group({
     name: this.formBuilder.control<string>(''),
@@ -29,7 +29,7 @@ export class RubricNewContactComponent {
   onCreate() {
     this.setActive = false ;
     this.create.emit(this.form.value);
-    this.getpage.emit(this.currentPage)
+   // this.getpage.emit(this.currentPage)
     debugger
     const defaultValue = {
       name: '',

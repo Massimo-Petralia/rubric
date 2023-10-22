@@ -12,15 +12,16 @@ export class DataService {
   constructor(private http: HttpClient) {}
 
   getData(page: number) {
-    debugger
-
-    return this.http.get<Contact[]>(`http://localhost:3000/contacts?_page=${page}`, {observe: 'response'}).pipe(
-      
-      catchError((error) => {
-        console.error('get contacts fail', error);
-        throw error;
+    return this.http
+      .get<Contact[]>(`http://localhost:3000/contacts?_page=${page}`, {
+        observe: 'response',
       })
-    );
+      .pipe(
+        catchError((error) => {
+          console.error('get contacts fail', error);
+          throw error;
+        })
+      );
   }
 
   createContact(contact: Contact) {
@@ -30,24 +31,25 @@ export class DataService {
         throw error;
       })
     );
-  };
-
-  deleteContact(id: number | null){
-    return this.http.delete(`${this.dataURL}/${id}`).pipe(
-      catchError((error)=> {
-        console.error('delete fail', error);
-        throw error
-      })
-    )
-  };
-
-  updateContact(contact: Contact){
-    return this.http.put<Contact>(`${this.dataURL}/${contact.id}`, contact).pipe(
-      catchError((error)=>{
-        console.error('update fail', error);
-        throw error
-      })
-    )
   }
 
+  deleteContact(id: number | null) {
+    return this.http.delete(`${this.dataURL}/${id}`).pipe(
+      catchError((error) => {
+        console.error('delete fail', error);
+        throw error;
+      })
+    );
+  }
+
+  updateContact(contact: Contact) {
+    return this.http
+      .put<Contact>(`${this.dataURL}/${contact.id}`, contact)
+      .pipe(
+        catchError((error) => {
+          console.error('update fail', error);
+          throw error;
+        })
+      );
+  }
 }

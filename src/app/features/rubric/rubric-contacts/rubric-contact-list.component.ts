@@ -1,24 +1,17 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-  OnDestroy,
-} from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Contact } from 'src/app/models/contact';
 
 @Component({
-  selector: 'app-rubric-contacts',
-  templateUrl: './rubric-contacts.component.html',
-  styleUrls: ['./rubric-contacts.component.scss'],
+  selector: 'app-rubric-contact-list',
+  templateUrl: './rubric-contact-list.component.html',
+  styleUrls: ['./rubric-contact-list.component.scss'],
 })
-export class RubricContactsComponent implements OnDestroy {
+export class RubricContactListComponent {
   newContact?: string | null;
 
   showSaved: boolean = false;
 
-  subs = new Subscription();
+  @Input() currentPage!: number;
 
   @Input() totalContacts?: number;
 
@@ -45,7 +38,6 @@ export class RubricContactsComponent implements OnDestroy {
 
   onDelete(id: number | null) {
     this.delete.emit(id);
-    
   }
 
   onSave(contact: Contact) {
@@ -64,9 +56,5 @@ export class RubricContactsComponent implements OnDestroy {
       }
       return 0;
     });
-  }
-
-  ngOnDestroy(): void {
-    this.subs.unsubscribe();
   }
 }

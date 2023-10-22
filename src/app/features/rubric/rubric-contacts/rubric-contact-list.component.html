@@ -1,0 +1,24 @@
+<h3 *ngIf="!contacts.length">
+  Non ci sono contatti nella rubrica 
+</h3>
+
+<app-rubric-contact
+  *ngFor="let contact of contacts"
+  [contact]="contact"
+  (delete)="onDelete($event)"
+  (save)="onSave($event)"
+></app-rubric-contact>
+
+<button (click)="sortAlphabetically()">Sort</button>
+
+<nz-pagination
+  [nzPageIndex]="currentPage"
+  [nzTotal]="totalContacts"
+  (nzPageIndexChange)="paginateData($event)"
+  #pagination
+></nz-pagination>
+
+<app-rubric-new-contact (create)="onCreate($event)"></app-rubric-new-contact>
+<div *ngIf="showSaved">
+  <p>{{ newContact }} aggiunto alla rubrica</p>
+</div>

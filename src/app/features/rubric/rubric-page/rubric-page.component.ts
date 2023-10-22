@@ -14,21 +14,20 @@ export class RubricPageComponent implements OnInit, OnDestroy {
 
   contacts: Contact[] = [];
 
-  subs = new Subscription();
-
   totalContacts?: number;
 
   page!: number;
 
+  subs = new Subscription();
+
   getContactsPages(page: number) {
     this.subs.add(
-      this.dataService.getData(page).subscribe((contacts) => {
-        const xTotalCount = contacts.headers.get('X-total-count');
+      this.dataService.getData(page).subscribe((response) => {
+        const xTotalCount = response.headers.get('X-total-count');
         if (xTotalCount) {
           this.totalContacts = Number(xTotalCount);
-          this.contacts = contacts.body!;
+          this.contacts = response.body!.reverse();
         }
-        debugger;
       })
     );
     return (this.page = page);
@@ -41,8 +40,13 @@ export class RubricPageComponent implements OnInit, OnDestroy {
 
   onCreate(contact: Contact) {
     this.subs.add(
-      this.dataService.createContact(contact).subscribe((response) => {
-        this.getContactsPages(this.page);
+      this.dataService.createContact(contact).subscribe(() => {
+        if (this.contacts.length >= 10) {
+          this.page = this.page + 1;
+          this.getContactsPages(this.page);
+        } else {
+          this.getContactsPages(this.page);
+        }
       })
     );
   }

@@ -1,10 +1,9 @@
-
-<app-rubric-contacts
-[totalContacts]="totalContacts"
+<app-rubric-contact-list
+  [totalContacts]="totalContacts"
+  [currentPage]="page"
   [contacts]="contacts"
   (create)="onCreate($event)"
   (delete)="onDelete($event)"
   (save)="onSave($event)"
   (page)="getContactsPages($event)"
-
-></app-rubric-contacts>
+></app-rubric-contact-list>

@@ -12,7 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RubricPageComponent } from './features/rubric/rubric-page/rubric-page.component';
-import { RubricContactsComponent } from './features/rubric/rubric-contacts/rubric-contacts.component';
+import {RubricContactListComponent } from './features/rubric/rubric-contacts/rubric-contact-list.component';
 import { RubricContactComponent } from './features/rubric/rubric-contact/rubric-contact.component';
 import { RubricNewContactComponent } from './features/rubric/rubric-new-contact/rubric-new-contact.component';
 
@@ -24,7 +24,7 @@ registerLocaleData(it);
   declarations: [
     AppComponent,
     RubricPageComponent,
-    RubricContactsComponent,
+    RubricContactListComponent,
     RubricContactComponent,
     RubricNewContactComponent
   ],

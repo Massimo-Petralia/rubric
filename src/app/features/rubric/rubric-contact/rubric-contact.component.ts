@@ -29,7 +29,6 @@ export class RubricContactComponent implements OnChanges {
     id: this.formBuilder.control<number | null>(null),
   });
 
-
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -39,14 +38,13 @@ export class RubricContactComponent implements OnChanges {
       this.form.patchValue(this.contact || {});
     }
   }
-  
+
   onDelete() {
     this.delete.emit(this.form.value.id);
   }
-  
+
   onSave() {
-    this.contact.name = this.form.value.name //assegno il valore inserito in input dall'utente 
-    //alla proprietà name dell'oggetto contact: Contact
+    this.contact.name = this.form.value.name;
     this.save.emit(this.form.value);
-}
+  }
 }
