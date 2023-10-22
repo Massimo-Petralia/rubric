@@ -41,12 +41,11 @@ export class RubricContactsComponent implements OnDestroy {
     setTimeout(() => {
       this.showSaved = false;
     }, 2000);
-    this.totalContacts = this.totalContacts! + 1;
   }
 
   onDelete(id: number | null) {
     this.delete.emit(id);
-    this.totalContacts = this.totalContacts! - 1;
+    
   }
 
   onSave(contact: Contact) {

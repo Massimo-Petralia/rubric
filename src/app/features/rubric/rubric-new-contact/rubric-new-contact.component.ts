@@ -30,6 +30,7 @@ export class RubricNewContactComponent {
     this.setActive = false ;
     this.create.emit(this.form.value);
     this.getpage.emit(this.currentPage)
+    debugger
     const defaultValue = {
       name: '',
       surname: '',
