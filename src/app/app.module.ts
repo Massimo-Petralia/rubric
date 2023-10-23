@@ -17,6 +17,7 @@ import { RubricContactComponent } from './features/rubric/rubric-contact/rubric-
 import { RubricNewContactComponent } from './features/rubric/rubric-new-contact/rubric-new-contact.component';
 
 import { ngZorroAntdModule } from './ng-zorro-antd.module';
+import { RubricSearchResultsListComponent } from './features/rubric/rubric-search-results-list/rubric-search-results-list.component';
 
 registerLocaleData(it);
 
@@ -26,7 +27,8 @@ registerLocaleData(it);
     RubricPageComponent,
     RubricContactListComponent,
     RubricContactComponent,
-    RubricNewContactComponent
+    RubricNewContactComponent,
+    RubricSearchResultsListComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,8 @@ registerLocaleData(it);
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ngZorroAntdModule
+    ngZorroAntdModule,
+ 
   ],
   providers: [
     { provide: NZ_I18N, useValue: it_IT }

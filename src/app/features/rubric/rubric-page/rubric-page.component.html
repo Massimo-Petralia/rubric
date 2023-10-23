@@ -1,4 +1,4 @@
-<app-rubric-contact-list
+<app-rubric-contact-list *ngIf="!searchResultsList"
   [totalContacts]="totalContacts"
   [currentPage]="page"
   [contacts]="contacts"
@@ -7,3 +7,14 @@
   (save)="onSave($event)"
   (page)="getContactsPages($event)"
 ></app-rubric-contact-list>
+
+<app-rubric-search-results-list [searchResultsList]="searchResultsList" *ngIf="searchResultsList"></app-rubric-search-results-list>
+
+<button (click)="search()">fake search request</button>
+
+
+
+
+
+
+

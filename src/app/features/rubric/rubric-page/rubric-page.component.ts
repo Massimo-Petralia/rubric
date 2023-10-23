@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { Contact } from 'src/app/models/contact';
 import { DataService } from 'src/app/services/data.service';
 import { OnDestroy } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-rubric-page',
@@ -10,7 +11,7 @@ import { OnDestroy } from '@angular/core';
   styleUrls: ['./rubric-page.component.scss'],
 })
 export class RubricPageComponent implements OnInit, OnDestroy {
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService, private http: HttpClient) {}
 
   contacts: Contact[] = [];
 
@@ -65,6 +66,17 @@ export class RubricPageComponent implements OnInit, OnDestroy {
   onSave(contact: Contact) {
     this.subs.add(this.dataService.updateContact(contact).subscribe());
   }
+
+searchResultsList?: any[]
+search(){
+  this.http.get<any[]>('http://localhost:3000/contacts?q=pippo').subscribe((response)=>{
+    console.log('search response: ', response.length)
+    if(response.length){
+      this.searchResultsList = response
+    }
+  })
+}
+
   ngOnDestroy(): void {
     this.subs.unsubscribe();
   }
