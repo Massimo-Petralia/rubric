@@ -51,5 +51,15 @@ export class DataService {
           throw error;
         })
       );
+  };
+
+  searchText(text: string){
+    debugger
+   return this.http.get<Contact[]>(`${this.dataURL}?q=${text}`).pipe(
+      catchError((error)=>{
+        console.error('get text searching fail', error)
+        throw error
+      })
+    )
   }
 }

@@ -10,6 +10,7 @@ export class RubricSearchResultsListComponent {
 @Input() searchResultsList?: Contact[]
 @Input() toggleView?: boolean
 
+
 @Output() back = new EventEmitter<boolean>()
 
 

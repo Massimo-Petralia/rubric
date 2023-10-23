@@ -85,6 +85,17 @@ search(){
  
 }
 
+onSearch(text: string){
+this.subs.add(
+  this.dataService.searchText(text).subscribe((data)=> {
+    if(data.length){
+      this.toggleView = true;
+      this.searchResultsList = data
+    } else {this.toggleView = false; console.log('nessun risultato trovato') }
+  })
+)
+}
+
   ngOnDestroy(): void {
     this.subs.unsubscribe();
   }

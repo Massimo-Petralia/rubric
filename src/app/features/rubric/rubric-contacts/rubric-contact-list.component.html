@@ -8,6 +8,10 @@
 ></app-rubric-contact>
 
 <button (click)="sortAlphabetically()">Sort</button>
+<div [formGroup]="form">
+<input class="contactsSearch" type="search" formControlName="search">
+</div>
+<button (click)="onSearch()">Search</button>
 
 <nz-pagination
   [nzPageIndex]="currentPage"
