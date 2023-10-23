@@ -17,7 +17,6 @@ import { RubricContactComponent } from './features/rubric/rubric-contact/rubric-
 import { RubricNewContactComponent } from './features/rubric/rubric-new-contact/rubric-new-contact.component';
 
 import { ngZorroAntdModule } from './ng-zorro-antd.module';
-import { RubricSearchResultsListComponent } from './features/rubric/rubric-search-results-list/rubric-search-results-list.component';
 
 registerLocaleData(it);
 
@@ -28,7 +27,6 @@ registerLocaleData(it);
     RubricContactListComponent,
     RubricContactComponent,
     RubricNewContactComponent,
-    RubricSearchResultsListComponent
   ],
   imports: [
     BrowserModule,

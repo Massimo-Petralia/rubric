@@ -1,5 +1,4 @@
 <app-rubric-contact-list
-  *ngIf="toggleView === false"
   [totalContacts]="totalContacts"
   [currentPage]="page"
   [contacts]="contacts"
@@ -10,11 +9,6 @@
   (searchWord)="onSearch($event)"
 ></app-rubric-contact-list>
 
-<app-rubric-search-results-list
-[searchResultsList]="searchResultsList"
-  [toggleView]="toggleView"
-  (back)="onBack($event)"
-  *ngIf="toggleView"
-></app-rubric-search-results-list>
 
-<button (click)="search()">fake search request</button>
+
+

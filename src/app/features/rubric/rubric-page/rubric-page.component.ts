@@ -67,31 +67,12 @@ export class RubricPageComponent implements OnInit, OnDestroy {
     this.subs.add(this.dataService.updateContact(contact).subscribe());
   }
 
-searchResultsList?: Contact[]
-toggleView?: boolean = false;
-onBack(value: boolean){
-  this.toggleView = value
-}
-search(){
-  this.subs.add(
-    this.http.get<Contact[]>('http://localhost:3000/contacts?q=pippo').subscribe((response)=>{
-      if(response.length){
-        this.toggleView = true
-        this.searchResultsList = response;
-      } else this.toggleView = false; console.log('nessun risultato trovato')
-      console.log('search response: ', response)
-    })
-    )
- 
-}
+
 
 onSearch(text: string){
 this.subs.add(
   this.dataService.searchText(text).subscribe((data)=> {
-    if(data.length){
-      this.toggleView = true;
-      this.searchResultsList = data
-    } else {this.toggleView = false; console.log('nessun risultato trovato') }
+    this.contacts = data
   })
 )
 }
