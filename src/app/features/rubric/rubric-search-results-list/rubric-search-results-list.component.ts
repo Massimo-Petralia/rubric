@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Contact } from 'src/app/models/contact';
 
 @Component({
@@ -9,4 +9,12 @@ import { Contact } from 'src/app/models/contact';
 export class RubricSearchResultsListComponent {
 @Input() searchResultsList?: Contact[]
 @Input() toggleView?: boolean
+
+@Output() back = new EventEmitter<boolean>()
+
+
+onBack(){
+  this.back.emit(false)
+}
+
 }

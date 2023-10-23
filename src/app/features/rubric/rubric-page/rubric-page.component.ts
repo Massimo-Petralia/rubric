@@ -68,14 +68,17 @@ export class RubricPageComponent implements OnInit, OnDestroy {
   }
 
 searchResultsList?: Contact[]
-toggleView?: boolean = false
+toggleView?: boolean = false;
+onBack(value: boolean){
+  this.toggleView = value
+}
 search(){
   this.subs.add(
     this.http.get<Contact[]>('http://localhost:3000/contacts?q=pippo').subscribe((response)=>{
       if(response.length){
         this.toggleView = true
         this.searchResultsList = response;
-      } else this.toggleView = false
+      } else this.toggleView = false; console.log('nessun risultato trovato')
       console.log('search response: ', response)
     })
     )

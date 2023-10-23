@@ -12,6 +12,7 @@
 <app-rubric-search-results-list
 [searchResultsList]="searchResultsList"
   [toggleView]="toggleView"
+  (back)="onBack($event)"
   *ngIf="toggleView"
 ></app-rubric-search-results-list>
 
