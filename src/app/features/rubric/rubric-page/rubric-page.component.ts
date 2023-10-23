@@ -67,14 +67,19 @@ export class RubricPageComponent implements OnInit, OnDestroy {
     this.subs.add(this.dataService.updateContact(contact).subscribe());
   }
 
-searchResultsList?: any[]
+searchResultsList?: Contact[]
+toggleView?: boolean = false
 search(){
-  this.http.get<any[]>('http://localhost:3000/contacts?q=pippo').subscribe((response)=>{
-    console.log('search response: ', response.length)
-    if(response.length){
-      this.searchResultsList = response
-    }
-  })
+  this.subs.add(
+    this.http.get<Contact[]>('http://localhost:3000/contacts?q=pippo').subscribe((response)=>{
+      if(response.length){
+        this.toggleView = true
+        this.searchResultsList = response;
+      } else this.toggleView = false
+      console.log('search response: ', response)
+    })
+    )
+ 
 }
 
   ngOnDestroy(): void {
