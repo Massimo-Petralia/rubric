@@ -22,20 +22,6 @@
       "id": 74
     },
     {
-      "name": "conan il barbaro",
-      "surname": "",
-      "email": "",
-      "phone": "",
-      "id": 75
-    },
-    {
-      "name": "conan the barbariannnn",
-      "surname": "",
-      "email": "",
-      "phone": "",
-      "id": 76
-    },
-    {
       "name": "red sonja",
       "surname": "",
       "email": "",
@@ -99,13 +85,6 @@
       "id": 91
     },
     {
-      "name": "bisio",
-      "surname": "",
-      "email": "",
-      "phone": "",
-      "id": 92
-    },
-    {
       "name": "arnaldo",
       "surname": "",
       "email": "",
@@ -113,7 +92,7 @@
       "id": 93
     },
     {
-      "name": "pippo",
+      "name": "pippo&pluto",
       "surname": "",
       "email": "",
       "phone": "",
@@ -279,13 +258,6 @@
       "email": "",
       "phone": "",
       "id": 120
-    },
-    {
-      "name": "bisio",
-      "surname": "altro",
-      "email": "",
-      "phone": "",
-      "id": 121
     }
   ]
 }

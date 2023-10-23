@@ -12,7 +12,7 @@
 <input class="contactsSearch" type="search" formControlName="search">
 </div>
 <button (click)="onSearch()">Search</button>
-<button (click)="paginateData(currentPage)">Back</button>
+<button (click)="back(backupPage)">Back</button>
 
 <nz-pagination
   [nzPageIndex]="currentPage"

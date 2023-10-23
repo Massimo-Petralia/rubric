@@ -72,6 +72,10 @@ export class RubricPageComponent implements OnInit, OnDestroy {
 onSearch(text: string){
 this.subs.add(
   this.dataService.searchText(text).subscribe((data)=> {
+    if(!data.length){
+      console.log('nessun risultato trovato')
+      return
+    }
     this.contacts = data
   })
 )

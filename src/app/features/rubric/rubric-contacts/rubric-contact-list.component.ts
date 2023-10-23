@@ -68,6 +68,13 @@ form = this.formBuilder.group({
   };
 
   onSearch(){
+    const backupPage = this.contacts
     this.searchWord.emit(this.form.controls.search.value!)
+    return this.backupPage = backupPage
+  }
+backupPage!: Contact[]
+
+  back(backupPage: Contact[]){
+    this.contacts = backupPage
   }
 }
