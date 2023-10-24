@@ -1,12 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  Input,
-  Output,
-  ViewChild,
-  AfterViewInit,
-} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Contact } from 'src/app/models/contact';
 import { FormBuilder } from '@angular/forms';
 
@@ -23,6 +15,7 @@ export class RubricContactListComponent {
   showSaved: boolean = false;
 
   notFoundMess: boolean = false;
+
   @Input() currentPage!: number;
 
   @Input() totalContacts?: number;
@@ -79,11 +72,11 @@ export class RubricContactListComponent {
     this.searchWord.emit(this.form.controls.search.value!);
     this.backupPageCounter = this.backupPageCounter + 1;
     if (this.backupPageCounter > 1) {
-      return
+      return;
     } else {
       const backupPage = this.contacts;
 
-      this.backupPage = backupPage
+      this.backupPage = backupPage;
     }
   }
 

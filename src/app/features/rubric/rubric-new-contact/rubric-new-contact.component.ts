@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output} from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { BooleanInput } from 'ng-zorro-antd/core/types';
 import { Contact } from 'src/app/models/contact';
@@ -9,15 +9,11 @@ import { Contact } from 'src/app/models/contact';
   styleUrls: ['./rubric-new-contact.component.scss'],
 })
 export class RubricNewContactComponent {
-
   @Output() create = new EventEmitter<Contact>();
 
   constructor(private formBuilder: FormBuilder) {}
 
   setActive: BooleanInput;
-
-  //@Input() currentPage?: number
-  //@Output() getpage = new EventEmitter<number>() 
 
   form = this.formBuilder.group({
     name: this.formBuilder.control<string>(''),
@@ -27,10 +23,9 @@ export class RubricNewContactComponent {
   });
 
   onCreate() {
-    this.setActive = false ;
+    this.setActive = false;
     this.create.emit(this.form.value);
-   // this.getpage.emit(this.currentPage)
-    debugger
+    debugger;
     const defaultValue = {
       name: '',
       surname: '',

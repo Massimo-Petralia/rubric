@@ -21,9 +21,8 @@
   <button  class="sortButton" (click)="sortAlphabetically()">Sort</button>
 </div>
 
-
-
 <app-rubric-new-contact (create)="onCreate($event)"></app-rubric-new-contact>
+
 <div class="newContactAddMess" *ngIf="showSaved">
   <p>{{ newContact }} aggiunto alla rubrica</p>
 </div>

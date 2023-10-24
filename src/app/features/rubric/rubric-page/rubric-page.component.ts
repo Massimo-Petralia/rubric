@@ -34,7 +34,7 @@ export class RubricPageComponent implements OnInit, OnDestroy {
         }
       })
     );
-    return (this.page = page);
+     this.page = page;
   }
 
   ngOnInit(): void {
@@ -78,7 +78,7 @@ export class RubricPageComponent implements OnInit, OnDestroy {
           setTimeout(() => {
             this.contactListComponent.notFoundMess = false;
           }, 2000);
-          return;
+          return
         }
         this.contacts = data;
       })
