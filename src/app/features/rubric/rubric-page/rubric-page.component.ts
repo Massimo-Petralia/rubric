@@ -12,8 +12,8 @@ import { RubricContactListComponent } from '../rubric-contacts/rubric-contact-li
   styleUrls: ['./rubric-page.component.scss'],
 })
 export class RubricPageComponent implements OnInit, OnDestroy {
-
-  @ViewChild(RubricContactListComponent) contactListComponent!: RubricContactListComponent;
+  @ViewChild(RubricContactListComponent)
+  contactListComponent!: RubricContactListComponent;
   constructor(private dataService: DataService, private http: HttpClient) {}
 
   contacts: Contact[] = [];
@@ -70,23 +70,20 @@ export class RubricPageComponent implements OnInit, OnDestroy {
     this.subs.add(this.dataService.updateContact(contact).subscribe());
   }
 
-
-
-onSearch(text: string){
-this.subs.add(
-  this.dataService.searchText(text).subscribe((data)=> {
-    if(!data.length){
-      this.contactListComponent.notFoundMess = true
-      setTimeout(() => {
-        this.contactListComponent.notFoundMess = false;
-      }, 2000);
-      console.log('nessun risultato trovato')
-      return
-    }
-    this.contacts = data
-  })
-)
-}
+  onSearch(text: string) {
+    this.subs.add(
+      this.dataService.searchText(text).subscribe((data) => {
+        if (!data.length) {
+          this.contactListComponent.notFoundMess = true;
+          setTimeout(() => {
+            this.contactListComponent.notFoundMess = false;
+          }, 2000);
+          return;
+        }
+        this.contacts = data;
+      })
+    );
+  }
 
   ngOnDestroy(): void {
     this.subs.unsubscribe();

@@ -7,21 +7,23 @@
   (save)="onSave($event)"
 ></app-rubric-contact>
 
-<button (click)="sortAlphabetically()">Sort</button>
-<div [formGroup]="form">
-<input class="contactsSearch" type="search" formControlName="search">
-</div>
-<button (click)="back(backupPage)">Back</button>
-<button (click)="onSearch()">Search</button>
-<div *ngIf="notFoundMess" #notFoundMess>nessun risultato trovato</div>
-
 <nz-pagination
   [nzPageIndex]="currentPage"
   [nzTotal]="totalContacts"
   (nzPageIndexChange)="paginateData($event)"
 ></nz-pagination>
 
+<div class="form" [formGroup]="form">
+  <button (click)="back(backupPage)">Back</button>
+  <input class="contactsSearch" type="search" formControlName="search">
+  <button (click)="onSearch()">Search</button>
+  <span class="notFoundMess" *ngIf="notFoundMess" >nessun risultato trovato</span>
+  <button  class="sortButton" (click)="sortAlphabetically()">Sort</button>
+</div>
+
+
+
 <app-rubric-new-contact (create)="onCreate($event)"></app-rubric-new-contact>
-<div *ngIf="showSaved">
+<div class="newContactAddMess" *ngIf="showSaved">
   <p>{{ newContact }} aggiunto alla rubrica</p>
 </div>

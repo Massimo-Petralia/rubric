@@ -1,4 +1,12 @@
-import { Component, ElementRef, EventEmitter, Input, Output, ViewChild, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+  AfterViewInit,
+} from '@angular/core';
 import { Contact } from 'src/app/models/contact';
 import { FormBuilder } from '@angular/forms';
 
@@ -7,15 +15,14 @@ import { FormBuilder } from '@angular/forms';
   templateUrl: './rubric-contact-list.component.html',
   styleUrls: ['./rubric-contact-list.component.scss'],
 })
-export class RubricContactListComponent  {
-constructor(private formBuilder: FormBuilder){}
-
+export class RubricContactListComponent {
+  constructor(private formBuilder: FormBuilder) {}
 
   newContact?: string | null;
 
   showSaved: boolean = false;
 
-  notFoundMess: boolean = false
+  notFoundMess: boolean = false;
   @Input() currentPage!: number;
 
   @Input() totalContacts?: number;
@@ -27,11 +34,11 @@ constructor(private formBuilder: FormBuilder){}
   @Output() create = new EventEmitter<Contact>();
   @Output() delete = new EventEmitter<number | null>();
   @Output() save = new EventEmitter<Contact>();
-  @Output() searchWord = new EventEmitter<string>()
+  @Output() searchWord = new EventEmitter<string>();
 
-form = this.formBuilder.group({
-  search: this.formBuilder.control<string>('')
-})
+  form = this.formBuilder.group({
+    search: this.formBuilder.control<string>(''),
+  });
 
   paginateData(page: number) {
     this.page.emit(page);
@@ -66,17 +73,24 @@ form = this.formBuilder.group({
       }
       return 0;
     });
-  };
-
-  onSearch(){
-    const backupPage = this.contacts
-    this.searchWord.emit(this.form.controls.search.value!)
-    return this.backupPage = backupPage
-  }
-backupPage!: Contact[]
-
-  back(backupPage: Contact[]){
-    this.contacts = backupPage
   }
 
+  onSearch() {
+    this.searchWord.emit(this.form.controls.search.value!);
+    this.backupPageCounter = this.backupPageCounter + 1;
+    if (this.backupPageCounter > 1) {
+      return
+    } else {
+      const backupPage = this.contacts;
+
+      this.backupPage = backupPage
+    }
+  }
+
+  backupPage!: Contact[];
+  backupPageCounter: number = 0;
+
+  back(backupPage: Contact[]) {
+    this.contacts = backupPage;
+  }
 }
