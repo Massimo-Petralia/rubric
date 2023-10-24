@@ -11,8 +11,9 @@
 <div [formGroup]="form">
 <input class="contactsSearch" type="search" formControlName="search">
 </div>
-<button (click)="onSearch()">Search</button>
 <button (click)="back(backupPage)">Back</button>
+<button (click)="onSearch()">Search</button>
+<div *ngIf="notFoundMess" #notFoundMess>nessun risultato trovato</div>
 
 <nz-pagination
   [nzPageIndex]="currentPage"

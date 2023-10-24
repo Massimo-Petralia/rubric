@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Contact } from 'src/app/models/contact';
 import { DataService } from 'src/app/services/data.service';
 import { OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { RubricContactListComponent } from '../rubric-contacts/rubric-contact-list.component';
 
 @Component({
   selector: 'app-rubric-page',
@@ -11,6 +12,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./rubric-page.component.scss'],
 })
 export class RubricPageComponent implements OnInit, OnDestroy {
+
+  @ViewChild(RubricContactListComponent) contactListComponent!: RubricContactListComponent;
   constructor(private dataService: DataService, private http: HttpClient) {}
 
   contacts: Contact[] = [];
@@ -73,6 +76,10 @@ onSearch(text: string){
 this.subs.add(
   this.dataService.searchText(text).subscribe((data)=> {
     if(!data.length){
+      this.contactListComponent.notFoundMess = true
+      setTimeout(() => {
+        this.contactListComponent.notFoundMess = false;
+      }, 2000);
       console.log('nessun risultato trovato')
       return
     }

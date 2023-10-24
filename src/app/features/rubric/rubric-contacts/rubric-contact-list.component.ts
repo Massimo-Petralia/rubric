@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild, AfterViewInit } from '@angular/core';
 import { Contact } from 'src/app/models/contact';
 import { FormBuilder } from '@angular/forms';
 
@@ -7,13 +7,15 @@ import { FormBuilder } from '@angular/forms';
   templateUrl: './rubric-contact-list.component.html',
   styleUrls: ['./rubric-contact-list.component.scss'],
 })
-export class RubricContactListComponent {
+export class RubricContactListComponent  {
 constructor(private formBuilder: FormBuilder){}
+
 
   newContact?: string | null;
 
   showSaved: boolean = false;
 
+  notFoundMess: boolean = false
   @Input() currentPage!: number;
 
   @Input() totalContacts?: number;
@@ -30,7 +32,6 @@ constructor(private formBuilder: FormBuilder){}
 form = this.formBuilder.group({
   search: this.formBuilder.control<string>('')
 })
-  //search? = this.formBuilder.control<string>('')
 
   paginateData(page: number) {
     this.page.emit(page);
@@ -77,4 +78,5 @@ backupPage!: Contact[]
   back(backupPage: Contact[]){
     this.contacts = backupPage
   }
+
 }
