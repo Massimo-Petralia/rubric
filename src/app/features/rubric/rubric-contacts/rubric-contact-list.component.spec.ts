@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RubricContactsComponent } from './rubric-contacts.component';
+import { RubricContactListComponent } from './rubric-contact-list.component';
 
 describe('RubricContactsComponent', () => {
-  let component: RubricContactsComponent;
-  let fixture: ComponentFixture<RubricContactsComponent>;
+  let component: RubricContactListComponent;
+  let fixture: ComponentFixture<RubricContactListComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [RubricContactsComponent]
+      declarations: [RubricContactListComponent]
     });
-    fixture = TestBed.createComponent(RubricContactsComponent);
+    fixture = TestBed.createComponent(RubricContactListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

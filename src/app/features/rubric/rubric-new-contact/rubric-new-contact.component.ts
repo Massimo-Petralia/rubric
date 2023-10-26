@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { BooleanInput } from 'ng-zorro-antd/core/types';
 import { Contact } from 'src/app/models/contact';
 
 @Component({
@@ -12,7 +13,7 @@ export class RubricNewContactComponent {
 
   constructor(private formBuilder: FormBuilder) {}
 
-  setActive?: boolean;
+  setActive: BooleanInput;
 
   form = this.formBuilder.group({
     name: this.formBuilder.control<string>(''),
@@ -22,7 +23,9 @@ export class RubricNewContactComponent {
   });
 
   onCreate() {
+    this.setActive = false;
     this.create.emit(this.form.value);
+    debugger;
     const defaultValue = {
       name: '',
       surname: '',
@@ -30,6 +33,5 @@ export class RubricNewContactComponent {
       phone: '',
     };
     this.form.reset(defaultValue);
-    this.setActive = false;
   }
 }

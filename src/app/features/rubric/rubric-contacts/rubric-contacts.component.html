@@ -1,8 +1,0 @@
-<app-rubric-contact
-  *ngFor="let contact of contacts"
-  [contact]="contact"
-  (delete)="onDelete($event)"
-  (save)="onSave($event)"
-></app-rubric-contact>
-<button (click)="sortAlphabetically()">Sort</button>
-<app-rubric-new-contact (create)="onCreate($event)"></app-rubric-new-contact>
