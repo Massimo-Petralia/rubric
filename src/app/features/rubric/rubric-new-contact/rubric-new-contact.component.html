@@ -1,0 +1,15 @@
+<nz-collapse>
+  <nz-collapse-panel class="panelHeader" [nzHeader]="'Create new contact'" [(nzActive)]="setActive">
+    <form nz-form [formGroup]="form">
+      <label for="name">Name: </label>
+      <input nz-input type="text" id="name" formControlName="name" />
+      <label for="surname">Surname: </label>
+      <input nz-input type="text" id="surname" formControlName="surname" />
+      <label for="email">Email: </label>
+      <input nz-input type="text" id="email" formControlName="email" />
+      <label for="phone">Phone: </label>
+      <input nz-input type="text" id="phone" formControlName="phone" />
+    </form>
+    <button (click)="onCreate()">Add contact</button>
+  </nz-collapse-panel>
+ </nz-collapse>

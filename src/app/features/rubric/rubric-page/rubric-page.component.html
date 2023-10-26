@@ -1,0 +1,14 @@
+<app-rubric-contact-list
+  [totalContacts]="totalContacts"
+  [currentPage]="page"
+  [contacts]="contacts"
+  (create)="onCreate($event)"
+  (delete)="onDelete($event)"
+  (save)="onSave($event)"
+  (page)="getContactsPages($event)"
+  (searchWord)="onSearch($event)"
+></app-rubric-contact-list>
+
+
+
+
