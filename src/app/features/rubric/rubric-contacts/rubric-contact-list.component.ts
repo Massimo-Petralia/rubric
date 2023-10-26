@@ -35,6 +35,7 @@ export class RubricContactListComponent {
 
   paginateData(page: number) {
     this.page.emit(page);
+    this.backupPageCounter = 0;
   }
 
   onCreate(contact: Contact) {
@@ -85,5 +86,6 @@ export class RubricContactListComponent {
 
   back(backupPage: Contact[]) {
     this.contacts = backupPage;
+    this.backupPageCounter = 0;
   }
 }
